@@ -1,0 +1,5 @@
+.DS_Store
+.cache/
+# Personal scratch area for in-flight scans. Move finalized scans into
+# site/assets/ before they count as part of the collection.
+uploads/

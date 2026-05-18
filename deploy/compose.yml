@@ -1,0 +1,21 @@
+services:
+  do-not-disturb:
+    image: ghcr.io/spaceshipmike/do-not-disturb:latest
+    container_name: do-not-disturb
+    restart: unless-stopped
+    ports:
+      - "4603:80"
+    networks:
+      - homelab_network
+    labels:
+      - "wud.display.name=do-not-disturb"
+      - "wud.tag.include=^latest$$"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost/healthz >/dev/null || exit 1"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+
+networks:
+  homelab_network:
+    external: true

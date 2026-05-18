@@ -1,0 +1,20 @@
+.git
+.github
+.gitignore
+.DS_Store
+.cache
+.env
+AGENTS.md
+CLAUDE.md
+README.md
+Makefile
+deploy
+docs
+scripts
+uploads
+# Design-exploration files — kept in the repo for reference but not shipped.
+Directions.html
+design-canvas.jsx
+gallery-archive.jsx
+gallery-drawer.jsx
+gallery-folio.jsx
