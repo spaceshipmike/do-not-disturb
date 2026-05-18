@@ -256,7 +256,7 @@ function FolioGallery({ onOpen }) {
         <div style={s.rightCol}>
           <div style={s.issueLine}>Introduction</div>
           <p style={s.lede}>
-            Fifty-five hotel door hangers, lifted quietly from knobs across four decades of foreign service. Each one a small advertisement for sleep, in whatever language the morning happened to speak.
+            When my grandfather passed away, we found this collection on a corkboard in his office — kept from his years in the Foreign Service. I scanned them and posted them online; they went a bit viral, and Creative Review made them into a beautiful monograph. I rediscovered the scans on my laptop recently, so here they are again.
           </p>
         </div>
       </div>
