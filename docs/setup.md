@@ -21,7 +21,7 @@ Cloudflare DNS (*.h3r3.com)   Cloudflare Tunnel
         └──────────────┬──────────────┘
                        ▼
               NAS (192.168.10.10)
-              do-not-disturb container :4603
+              do-not-disturb container :4604
 ```
 
 Two access paths, both pointing at the same container — pick one or both.
@@ -68,7 +68,7 @@ This:
 
 Confirm:
 ```bash
-ssh mike@192.168.10.10 "curl -sI http://localhost:4603/healthz"   # → 200
+ssh mike@192.168.10.10 "curl -sI http://localhost:4604/healthz"   # → 200
 ```
 
 ## 3. M1 Traefik route (LAN path)
@@ -95,7 +95,7 @@ http:
     do-not-disturb:
       loadBalancer:
         servers:
-          - url: "http://192.168.10.10:4603"
+          - url: "http://192.168.10.10:4604"
 ```
 
 Traefik picks up file-provider changes without a restart. Verify on the M1:
@@ -115,7 +115,7 @@ In the [Cloudflare Zero Trust dashboard](https://one.dash.cloudflare.com/):
    - **Subdomain:** `dnd`
    - **Domain:** `h3r3.com`
    - **Service:** `http://do-not-disturb:80`
-     (NOT `http://localhost:4603` — the homelab `supabase-cloudflared`
+     (NOT `http://localhost:4604` — the homelab `supabase-cloudflared`
      container is on `homelab_network`, not host networking, so
      `localhost` resolves to cloudflared itself. Use the container name
      + internal port instead. Both containers share `homelab_network`,
@@ -140,7 +140,7 @@ make verify   # → ✓ live at https://dnd.h3r3.com (200, ~0.4s)
 If it fails, walk the path inward:
 
 1. `make status` — container running on NAS?
-2. `ssh mike@192.168.10.10 "curl -sI http://localhost:4603/healthz"` — container healthy?
+2. `ssh mike@192.168.10.10 "curl -sI http://localhost:4604/healthz"` — container healthy?
 3. `ssh mike@192.168.10.20 "curl -sI -H 'Host: dnd.h3r3.com' http://localhost:80"` — M1 Traefik routing?
 4. Cloudflare Zero Trust → Tunnel → public hostname listed?
 5. `dig dnd.h3r3.com` — resolves to a Cloudflare proxy?

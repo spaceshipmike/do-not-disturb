@@ -4,7 +4,7 @@ services:
     container_name: do-not-disturb
     restart: unless-stopped
     ports:
-      - "4603:80"
+      - "4604:80"
     networks:
       - homelab_network
     labels:

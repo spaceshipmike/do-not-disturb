@@ -10,7 +10,7 @@ A static one-page gallery for a personal collection of 55 hotel "Do Not Disturb"
 
 Containerized (`nginx:alpine`), built by GitHub Actions on push to `main`, published to `ghcr.io/spaceshipmike/do-not-disturb:latest`, auto-pulled by WUD on the home NAS. Matches the `~/Code/personal-site/` pattern exactly — see its `docs/setup.md` for the precedent and `~/Documents/Resources/System/DEPLOY-TO-HOMELAB.md` for the homelab deploy guide.
 
-The deploy mechanism is **`git push`**. No manual rsync, no image-build-on-laptop, no SSH for content changes. `AGENTS.md` has the full update loop; `docs/setup.md` has the one-time NAS + Traefik + Cloudflare Tunnel wiring. Container port is **4603** on the NAS (custom-app range `4600–4699`; jazz=4600, umami=4601, personal-site=4602).
+The deploy mechanism is **`git push`**. No manual rsync, no image-build-on-laptop, no SSH for content changes. `AGENTS.md` has the full update loop; `docs/setup.md` has the one-time NAS + Traefik + Cloudflare Tunnel wiring. Container port is **4604** on the NAS (custom-app range `4600–4699`; current claimants: jazz=4600, umami=4601, personal-site=4602, knowmarks-marketing=4603, do-not-disturb=4604). The authoritative port list lives on the M1 at `~/docker/traefik/dynamic/nas-services.yml` — grep there rather than trusting this line, which drifts.
 
 ```bash
 make preview          # open site/index.html locally
@@ -37,7 +37,7 @@ gallery-folio.jsx
 uploads/                    # staging area for new scans — NOT shipped
 
 Dockerfile / nginx.conf     # image build
-deploy/compose.yml          # NAS compose file (port 4603, homelab_network, WUD)
+deploy/compose.yml          # NAS compose file (port 4604, homelab_network, WUD)
 .github/workflows/deploy.yml
 scripts/{deploy,verify}.sh
 Makefile

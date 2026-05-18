@@ -18,7 +18,7 @@ GitHub Actions builds → ghcr.io/spaceshipmike/do-not-disturb:latest
 NAS pulls + restarts container
        │
        ▼
-LAN: Traefik (M1) ──▶ http://192.168.10.10:4603
+LAN: Traefik (M1) ──▶ http://192.168.10.10:4604
 WAN: Cloudflare Tunnel ──▶ http://do-not-disturb:80 (NAS)
 ```
 
